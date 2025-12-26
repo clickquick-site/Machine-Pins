@@ -4,8 +4,8 @@ const products = [
         name: "آلة صنع الشارات الاحترافية (Machine Pin's)",
         price: 24000,
         oldPrice: 25000,
-        description: "آلة معدنية متينة عالية الجودة، مثالية لبدء مشروعك المصغر في صناعة الهدايا والميداليات. تتميز بسهولة الاستخدام ودقة النتائج.",
-        image: "https://raw.githubusercontent.com/editeurbatna-droid/Click-Quick/main/1000024039.jpg"
+        description: "آلة متينة عالية الجودة، مثالية لبدء مشروعك المصغر في صناعة الهدايا والميداليات. تتميز بسهولة الاستخدام ودقة النتائج.",
+        image: "https://raw.githubusercontent.com/clickquick-site/Machine-Pins/main/1000024039.jpg"
     }
 ];
 
