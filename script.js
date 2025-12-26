@@ -16,34 +16,49 @@ function displayPage() {
 
     mainContent.innerHTML = `
         <div id="order-card" style="max-width: 550px; margin: auto; background: white; border-radius: 15px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); overflow: hidden;">
-            <div id="product-info" style="padding: 20px; text-align: center;">
-                <h2 style="color: #333;">آلة صنع الشارات الاحترافية</h2>
-                <div style="background: #fff5f5; border: 2px dashed #e63946; padding: 15px; border-radius: 10px; margin: 15px 0;">
-                    <span style="text-decoration: line-through; color: #999;">25,000 دج</span>
-                    <h3 style="color: #e63946; font-size: 2.2em; margin: 5px 0;">24,000 دج</h3>
+            <div style="padding: 25px; text-align: center; background: #fff;">
+                <h2 style="color: #333; margin-bottom: 5px;">آلة صنع الشارات الاحترافية</h2>
+                <h4 style="color: #666; margin-top: 0; font-family: 'Courier New', Courier, monospace;">Machine Pin's</h4>
+                
+                <p style="display: inline-block; background: #fff3cd; color: #856404; padding: 5px 15px; border-radius: 20px; font-size: 0.9em; font-weight: bold; margin: 10px 0;">
+                    ⚠️ تنبيه: الكمية المحدودة المتوفرة (5 قطع فقط)
+                </p>
+
+                <div style="background: #fff5f5; border: 2px dashed #e63946; padding: 15px; border-radius: 12px; margin: 15px 0; position: relative;">
+                    <span style="text-decoration: line-through; color: #999; font-size: 1.1em;">25,000 دج</span>
+                    <h3 style="color: #e63946; font-size: 2.5em; margin: 10px 0;">🚨 24,000 دج 🚨</h3>
+                    <p style="color: #28a745; font-weight: bold; margin: 0;">الآن قطعتين بـ 47,000 دج فقط!</p>
                 </div>
+                
+                <p style="color: #777; font-size: 0.85em; margin-bottom: 0;">* ملاحظة: سعر التوصيل غير محتسب في ثمن المنتج</p>
             </div>
 
             <div id="form-container" style="padding: 25px; background: #fafafa; border-top: 1px solid #eee;">
-                <p style="color: #555; font-weight: bold; margin-bottom: 15px; border-right: 4px solid #e63946; padding-right: 10px;">معلومات الشحن إجبارية (*)</p>
+                <h4 style="margin-bottom: 20px; color: #444; border-right: 5px solid #e63946; padding-right: 12px;">يرجى ملء استمارة الطلب:</h4>
                 
-                <input type="text" id="fullname" required placeholder="الإسم واللقب الكامل *" style="width:100%; padding:14px; margin-bottom:12px; border:1px solid #ddd; border-radius:8px; box-sizing:border-box;">
+                <input type="text" id="fullname" placeholder="الإسم واللقب الكامل *" style="width:100%; padding:14px; margin-bottom:12px; border:1px solid #ddd; border-radius:10px; box-sizing:border-box;">
                 
-                <input type="tel" id="phone" required pattern="[0-9]*" inputmode="numeric" placeholder="رقم الهاتف (أرقام فقط) *" style="width:100%; padding:14px; margin-bottom:12px; border:1px solid #ddd; border-radius:8px; box-sizing:border-box;">
+                <input type="tel" id="phone" inputmode="numeric" placeholder="رقم الهاتف (أرقام فقط) *" style="width:100%; padding:14px; margin-bottom:12px; border:1px solid #ddd; border-radius:10px; box-sizing:border-box;">
                 
-                <select id="offer" style="width:100%; padding:14px; margin-bottom:12px; border:1px solid #ddd; border-radius:8px; background:white;">
-                    <option value="1 قطعة">قطعة واحدة (24,000 دج)</option>
-                    <option value="2 قطعة">قطعتين (47,000 دج)</option>
+                <select id="offer" style="width:100%; padding:14px; margin-bottom:12px; border:1px solid #ddd; border-radius:10px; background:white;">
+                    <option value="1 قطعة">طلب قطعة واحدة (24,000 دج)</option>
+                    <option value="2 قطعة">طلب قطعتين (47,000 دج)</option>
                 </select>
 
-                <select id="wilaya" required style="width:100%; padding:14px; margin-bottom:12px; border:1px solid #ddd; border-radius:8px; background:white;">
-                    <option value="">إختر الولاية... *</option>
+                <select id="wilaya" style="width:100%; padding:14px; margin-bottom:12px; border:1px solid #ddd; border-radius:10px; background:white;">
+                    <option value="">إختر ولايتك... *</option>
                     ${options}
                 </select>
 
-                <input type="text" id="address" required placeholder="العنوان بالتفصيل (البلدية، الحي..) *" style="width:100%; padding:14px; margin-bottom:20px; border:1px solid #ddd; border-radius:8px; box-sizing:border-box;">
+                <input type="text" id="address" placeholder="العنوان بالتفصيل (البلدية، الحي..) *" style="width:100%; padding:14px; margin-bottom:12px; border:1px solid #ddd; border-radius:10px; box-sizing:border-box;">
 
-                <button onclick="sendOrder()" id="btn-submit" style="width:100%; padding:18px; background:#e63946; color:white; border:none; border-radius:8px; font-size:1.3em; font-weight:bold; cursor:pointer;">تأكيد الطلب الآن</button>
+                <p style="font-weight: bold; font-size: 0.9em; margin: 15px 0 10px; color: #555;">إختر وسيلة التوصيل المفضلة (مصاريف الشحن):</p>
+                <select id="delivery_type" style="width:100%; padding:14px; margin-bottom:25px; border:2px solid #e63946; border-radius:10px; background:white; font-weight: bold; color: #e63946;">
+                    <option value="التوصيل للمنزل">التوصيل للمنزل (الدار)</option>
+                    <option value="التوصيل للمكتب">التوصيل للمكتب (Yalidine/Bureau)</option>
+                </select>
+
+                <button onclick="sendOrder()" id="btn-submit" style="width:100%; padding:20px; background:#e63946; color:white; border:none; border-radius:10px; font-size:1.4em; font-weight:bold; cursor:pointer; box-shadow: 0 4px 10px rgba(230,57,70,0.3);">تأكيد الطلب الآن</button>
             </div>
         </div>
     `;
@@ -55,18 +70,17 @@ async function sendOrder() {
     const offer = document.getElementById('offer').value;
     const address = document.getElementById('address').value.trim();
     const wilaya = document.getElementById('wilaya').value;
+    const delivery = document.getElementById('delivery_type').value;
     const btn = document.getElementById('btn-submit');
     const mainCard = document.getElementById('order-card');
 
-    // التأكد من ملء جميع الأسئلة الإجبارية
     if(!name || !phone || !wilaya || !address) {
-        alert("عذراً! جميع الخانات التي تحمل علامة (*) هي أسئلة إجبارية.");
+        alert("يرجى ملء جميع الخانات الإجبارية (*)");
         return;
     }
 
-    // التأكد من أن الهاتف يحتوي على أرقام فقط
     if(isNaN(phone)) {
-        alert("يرجى إدخال رقم هاتف صحيح (أرقام فقط بدون حروف)");
+        alert("رقم الهاتف يجب أن يحتوي على أرقام فقط");
         return;
     }
 
@@ -78,29 +92,32 @@ async function sendOrder() {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
-                "data": [{ "name": name, "phone": phone, "offer": offer, "address": address, "wilaya": wilaya }]
+                "data": [{ 
+                    "name": name, 
+                    "phone": phone, 
+                    "offer": offer, 
+                    "address": address, 
+                    "wilaya": wilaya,
+                    "delivery": delivery // سيظهر في الإكسل عمود جديد اسمه delivery
+                }]
             })
         });
 
         if(response.ok) {
-            // إخفاء كل شيء وإظهار رسالة شكر نظيفة بدون أي روابط
             mainCard.innerHTML = `
                 <div style="padding: 60px 20px; text-align: center; background: white;">
                     <div style="font-size: 60px; color: #28a745; margin-bottom: 20px;">✅</div>
-                    <h2 style="color: #28a745; margin-bottom: 15px;">شكراً لك!</h2>
+                    <h2 style="color: #28a745; margin-bottom: 15px;">شكراً لثقتكم!</h2>
                     <p style="font-size: 1.2em; color: #333; line-height: 1.6;">
-                        تم استلام معلوماتك بنجاح.
+                        لقد تم استلام طلبك بنجاح.
                         <br><br>
-                        سنتصل بك هاتفياً في أقرب وقت لتأكيد الطلب.
+                        سيتصل بك فريق العمل هاتفياً قريباً لتأكيد العنوان وموعد الشحن.
                     </p>
-                    <div style="margin-top: 30px; border-top: 1px solid #eee; padding-top: 20px; color: #999; font-size: 0.9em;">
-                        لقد تم إغلاق الطلب بنجاح.
-                    </div>
                 </div>
             `;
         }
     } catch (e) {
-        alert('حدث خطأ، يرجى إعادة المحاولة');
+        alert('حدث خطأ غير متوقع، يرجى المحاولة مرة أخرى');
         btn.disabled = false;
         btn.innerText = "تأكيد الطلب الآن";
     }
