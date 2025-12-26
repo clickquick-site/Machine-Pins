@@ -25,10 +25,10 @@ function displayPage() {
                 <div style="background: #fff5f5; border: 2px dashed #e63946; padding: 15px; border-radius: 12px; margin: 15px 0;">
                     <span style="text-decoration: line-through; color: #999; font-size: 1.2em;">25,000 دج</span>
                     
-                    <div style="display: flex; align-items: center; justify-content: center; gap: 15px; margin: 10px 0;">
-                        <span style="font-size: 2.5em;">🚨</span>
-                        <h3 style="color: #e63946; font-size: 2.8em; margin: 0; font-weight: 900; white-space: nowrap;">24,000 دج</h3>
-                        <span style="font-size: 2.5em;">🚨</span>
+                    <div style="display: flex; align-items: center; justify-content: center; gap: 10px; margin: 10px 0;">
+                        <span style="font-size: 2.2em;">🚨</span>
+                        <h3 style="color: #e63946; font-size: 2.6em; margin: 0; font-weight: 900; white-space: nowrap;">24,000 دج</h3>
+                        <span style="font-size: 2.2em;">🚨</span>
                     </div>
                     
                     <p style="color: #28a745; font-weight: bold; margin: 5px 0 0;">🔥 عرض خاص: قطعتين بـ 47,000 دج فقط!</p>
@@ -81,7 +81,6 @@ async function sendOrder() {
         return;
     }
 
-    // تأكيد إضافي أن الهاتف يحتوي على 9 أرقام على الأقل
     if(phone.length < 9) {
         alert("يرجى إدخال رقم هاتف صحيح");
         return;
@@ -104,11 +103,7 @@ async function sendOrder() {
                 <div style="padding: 60px 20px; text-align: center; background: white;">
                     <div style="font-size: 70px; color: #28a745; margin-bottom: 20px;">✅</div>
                     <h2 style="color: #28a745; margin-bottom: 15px;">شكراً لثقتكم!</h2>
-                    <p style="font-size: 1.3em; color: #333; line-height: 1.6;">
-                        تم استلام معلوماتك بنجاح.
-                        <br><br>
-                        سيتصل بك فريقنا هاتفياً قريباً لتأكيد الطلب.
-                    </p>
+                    <p style="font-size: 1.3em; color: #333; line-height: 1.6;">تم استلام طلبك بنجاح. سنتصل بك قريباً.</p>
                 </div>
             `;
         }
