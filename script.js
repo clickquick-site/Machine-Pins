@@ -4,9 +4,7 @@ const products = [
         name: "آلة صنع الشارات الاحترافية (Machine Pin's)",
         price: 24000,
         oldPrice: 25000,
-        // تم تعديل الوصف ونزع كلمة معدنية
         description: "آلة متينة عالية الجودة، مثالية لبدء مشروعك المصغر في صناعة الهدايا والميداليات. تتميز بسهولة الاستخدام ودقة النتائج.",
-        // تحديث الرابط ليتوافق مع اسم المستودع الجديد
         image: "https://raw.githubusercontent.com/clickquick-site/Machine-Pins/main/1000024039.jpg"
     }
 ];
@@ -33,8 +31,9 @@ function displayProducts() {
 
 function contactWhatsApp(productName) {
     const phone = "213770044850";
-    const msg = `مرحباً، أريد الاستفسار عن ${productName} التي رأيتها في الفيديو.`;
-    window.open(`https://wa.me/${phone}?text=${encodeURIComponent(msg)}`, '_blank');
+    const msg = "مرحباً، أريد الاستفسار عن " + productName + " التي رأيتها في الفيديو.";
+    const url = "https://wa.me/" + phone + "?text=" + encodeURIComponent(msg);
+    window.open(url, '_blank');
 }
 
 displayProducts();
