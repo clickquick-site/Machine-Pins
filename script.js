@@ -17,10 +17,18 @@ function displayPage() {
 
     mainContent.innerHTML = `
         <style>
-            @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.05); } }
-            @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-5px); } }
-            .moving-price { animation: bounce 2s infinite ease-in-out; display: inline-block; }
-            .alert-blink { animation: pulse 1.5s infinite; display: inline-block; }
+            /* حركة وميض أضواء الطوارئ الحقيقية */
+            @keyframes emergencyFlash {
+                0%, 100% { text-shadow: 0 0 10px red, 0 0 20px red; transform: scale(1); filter: brightness(1); }
+                50% { text-shadow: 0 0 15px blue, 0 0 25px blue; transform: scale(1.2); filter: brightness(1.5); }
+            }
+            /* حركة السعر السريعة والاحترافية */
+            @keyframes fastBounce {
+                0%, 100% { transform: translateY(0); }
+                50% { transform: translateY(-7px); }
+            }
+            .moving-price { animation: fastBounce 0.8s infinite ease-in-out; display: inline-block; }
+            .real-police-light { animation: emergencyFlash 0.5s infinite alternate; display: inline-block; cursor: default; }
         </style>
 
         <div id="order-card" style="max-width: 550px; margin: 20px auto; background: white; border-radius: 15px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); overflow: hidden; direction: rtl; font-family: sans-serif;">
@@ -32,10 +40,10 @@ function displayPage() {
 
                 <div style="background: #fff5f5; border: 2px dashed #e63946; padding: 15px; border-radius: 12px; margin: 15px 0;">
                     <span style="text-decoration: line-through; color: #999; font-size: 1.2em;">25,000 دج</span>
-                    <div style="display: flex; align-items: center; justify-content: center; gap: 10px; margin: 10px 0;">
-                        <span class="alert-blink" style="font-size: 2em;">🚨</span>
-                        <h3 class="moving-price" style="color: #e63946; font-size: 2.8em; margin: 0; font-weight: 900;">24,300 دج</h3>
-                        <span class="alert-blink" style="font-size: 2em;">🚨</span>
+                    <div style="display: flex; align-items: center; justify-content: center; gap: 15px; margin: 10px 0;">
+                        <span class="real-police-light" style="font-size: 2.2em;">🚨</span>
+                        <h3 class="moving-price" style="color: #e63946; font-size: 3em; margin: 0; font-weight: 900;">24,300 دج</h3>
+                        <span class="real-police-light" style="font-size: 2.2em;">🚨</span>
                     </div>
                     <p style="color: #28a745; font-weight: bold; margin: 5px 0 0;">🔥 عرض خاص: قطعتين بـ 48,000 دج فقط!</p>
                 </div>
@@ -46,12 +54,12 @@ function displayPage() {
                 <input type="text" id="fullname" placeholder="الإسم واللقب الكامل *" style="width:100%; padding:15px; margin-bottom:12px; border:1px solid #ddd; border-radius:10px; box-sizing:border-box; font-size: 1.1em; text-align: right;">
                 <input type="text" id="phone" inputmode="numeric" oninput="this.value = this.value.replace(/[^0-9]/g, '')" placeholder="رقم الهاتف (أرقام فقط) *" style="width:100%; padding:15px; margin-bottom:12px; border:1px solid #ddd; border-radius:10px; box-sizing:border-box; font-size: 1.1em; text-align: right;">
                 
-                <select id="offer" style="width:100%; padding:15px; margin-bottom:12px; border:1px solid #ddd; border-radius:10px; background:white; font-size: 1.1em; direction: rtl;">
-                    <option value="1 قطعة">طلب قطعة واحدة (24,300 دج)</option>
-                    <option value="2 قطعة">طلب قطعتين (48,000 دج)</option>
+                <select id="offer" style="width:100%; padding:15px; margin-bottom:12px; border:1px solid #ddd; border-radius:10px; background:white; font-size: 1.1em;">
+                    <option value="1 قطعة (24,300 دج)">طلب قطعة واحدة (24,300 دج)</option>
+                    <option value="2 قطعة (48,000 دج)">طلب قطعتين (48,000 دج)</option>
                 </select>
 
-                <select id="wilaya" style="width:100%; padding:15px; margin-bottom:12px; border:1px solid #ddd; border-radius:10px; background:white; font-size: 1.1em; direction: rtl;">
+                <select id="wilaya" style="width:100%; padding:15px; margin-bottom:12px; border:1px solid #ddd; border-radius:10px; background:white; font-size: 1.1em;">
                     <option value="">إختر الولاية... *</option>
                     ${options}
                 </select>
@@ -59,7 +67,7 @@ function displayPage() {
                 <input type="text" id="address_input" placeholder="العنوان بالتفصيل (البلدية، الحي..) *" style="width:100%; padding:15px; margin-bottom:15px; border:1px solid #ddd; border-radius:10px; box-sizing:border-box; font-size: 1.1em; text-align: right;">
 
                 <p style="font-weight: bold; font-size: 1em; margin: 15px 0 10px; color: #444;">وسيلة التوصيل (مصاريف الشحن):</p>
-                <select id="delivery_type" style="width:100%; padding:15px; margin-bottom:8px; border:2px solid #e63946; border-radius:10px; background:white; font-weight: bold; color: #e63946; font-size: 1.1em; direction: rtl;">
+                <select id="delivery_type" style="width:100%; padding:15px; margin-bottom:8px; border:2px solid #e63946; border-radius:10px; background:white; font-weight: bold; color: #e63946; font-size: 1.1em;">
                     <option value="التوصيل للمنزل">🏠 التوصيل للمنزل (الدار)</option>
                     <option value="التوصيل للمكتب">🏢 التوصيل للمكتب (Yalidine/Bureau)</option>
                 </select>
@@ -75,13 +83,14 @@ async function sendOrder() {
     const name = document.getElementById('fullname').value.trim();
     const phone = document.getElementById('phone').value.trim();
     const offer = document.getElementById('offer').value;
-    const adress_val = document.getElementById('address_input').value.trim();
+    const address = document.getElementById('address_input').value.trim();
     const wilaya = document.getElementById('wilaya').value;
-    const delivery = document.getElementById('delivery_type').value;
+    const delivery = document.getElementById('delivery_type').value; // جلب قيمة التوصيل
+    
     const btn = document.getElementById('btn-submit');
     const mainCard = document.getElementById('order-card');
 
-    if(!name || !phone || !wilaya || !adress_val) {
+    if(!name || !phone || !wilaya || !address) {
         alert("يرجى ملء جميع الخانات الإجبارية (*)");
         return;
     }
@@ -98,9 +107,9 @@ async function sendOrder() {
                     "name": name, 
                     "phone": phone, 
                     "offer": offer, 
-                    "address": adress_val, 
+                    "address": address, // التأكد من كتابتها بـ dd لتطابق Sheet
                     "wilaya": wilaya, 
-                    "delivery": delivery 
+                    "delivery": delivery // إرسال بيانات التوصيل للمنزل/المكتب
                 }]
             })
         });
@@ -113,15 +122,12 @@ async function sendOrder() {
                     <p style="font-size: 1.3em; color: #333; line-height: 1.6;">تم استلام طلبك بنجاح. سنتصل بك قريباً.</p>
                 </div>
             `;
-        } else {
-            throw new Error('API Error');
-        }
+        } else { throw new Error(); }
     } catch (e) {
-        alert('حدث خطأ في الاتصال، يرجى المحاولة لاحقاً');
+        alert('حدث خطأ، يرجى المحاولة لاحقاً');
         btn.disabled = false;
         btn.innerText = "تأكيد الطلب الآن";
     }
 }
 
-// تشغيل الواجهة فور تحميل الملف
-displayPage();
+document.addEventListener('DOMContentLoaded', displayPage);
