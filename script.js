@@ -32,6 +32,24 @@ function displayPage() {
         <div id="order-card" style="max-width: 550px; margin: auto; background: white; border-radius: 15px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); overflow: hidden; direction: rtl;">
             <div style="padding: 25px; text-align: center;">
                 <h2 style="color: #333; margin-bottom: 5px; font-size: 1.5em;">آلة صنع الشارات الاحترافية</h2>
-                <h1 style="color: #000; margin-top: 0; font-size: 2.5em; font-weight: 900; font-family: Arial, sans-serif; white-space: nowrap;">Machine Pin's</h1>
+                <h1 style="color: #000; margin-top: 0; font-size: 2.2em; font-weight: 900; font-family: Arial, sans-serif; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Machine Pin's</h1>
                 
-                <p style="
+                <p style="color: #e63946; font-weight: bold; margin: 15px 0; font-size: 1.2em;">⚠️ سارع بالطلب.. الكمية محدودة جداً!</p>
+
+                <div style="background: #fff5f5; border: 2px dashed #e63946; padding: 15px; border-radius: 12px; margin: 15px 0;">
+                    <span style="text-decoration: line-through; color: #999; font-size: 1.2em;">25,000 دج</span>
+                    
+                    <div style="display: flex; align-items: center; justify-content: center; gap: 10px; margin: 10px 0; white-space: nowrap;">
+                        <span class="alert-blink" style="font-size: 2.2em;">🚨</span>
+                        <h3 class="moving-price" style="color: #e63946; font-size: 2.8em; margin: 0; font-weight: 900;">24,300 دج</h3>
+                        <span class="alert-blink" style="font-size: 2.2em;">🚨</span>
+                    </div>
+                    
+                    <p style="color: #28a745; font-weight: bold; margin: 5px 0 0;">🔥 عرض خاص: قطعتين بـ 48,000 دج فقط!</p>
+                </div>
+                
+                <p style="color: #777; font-size: 0.85em;">* تنبيه: سعر التوصيل غير محتسب في ثمن المنتج</p>
+            </div>
+
+            <div id="form-container" style="padding: 25px; background: #fafafa; border-top: 1px solid #eee;">
+                <input type="text" id="fullname" placeholder="الإسم واللقب الكامل *" style="width:100%; padding:15px; margin-bottom:12px; border:1px solid #ddd; border-radius:10px; box-
