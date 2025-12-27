@@ -8,54 +8,47 @@ function displayPage() {
 
     mainContent.innerHTML = `
         <style>
-            @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap');
+            @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&family=Tajawal:wght@500;800;900&display=swap');
             
             body { background: #f0f2f5; font-family: 'Cairo', sans-serif; margin: 0; padding: 0; direction: rtl; }
             .main-container { width: 100%; max-width: 500px; margin: 0 auto; background: white; min-height: 100vh; box-shadow: 0 0 25px rgba(0,0,0,0.1); }
             
-            /* تنسيق العناوين المتقاربة - صفر فراغات زائدة */
             .title-main { font-size: 2.8rem; font-weight: 900; margin: 10px 0 0 0; color: #000; text-align: center; line-height: 1.1; }
-            .sub-text { font-size: 1.3rem; font-weight: 700; color: #333; margin: 5px 0 0 0; text-align: center; }
+            
+            /* نصوص المشاريع بخط Tajawal كما طلبت */
+            .sub-text-tajawal { font-family: 'Tajawal', sans-serif; font-size: 1.35rem; font-weight: 800; color: #333; margin: 5px 0 0 0; text-align: center; }
+            
             .brand-blue { font-size: 2.4rem; font-weight: 900; color: #007bff; margin: 0; text-align: center; letter-spacing: -1px; }
             .solution { font-size: 1.2rem; font-weight: 700; color: #666; margin: 0 0 15px 0; text-align: center; }
 
-            /* تأثير الوميض الشرطي السريع جداً */
+            /* زيادة قوة الوميض الشرطي الأزرق والأحمر */
             @keyframes policeFlash { 
-                0% { filter: drop-shadow(0 0 5px red); transform: scale(1); }
-                50% { filter: drop-shadow(0 0 20px blue); transform: scale(1.1); }
-                100% { filter: drop-shadow(0 0 5px red); transform: scale(1); }
+                0% { filter: drop-shadow(0 0 10px red); color: #ff0000; transform: scale(1); }
+                50% { filter: drop-shadow(0 0 25px blue); color: #0000ff; transform: scale(1.2); }
+                100% { filter: drop-shadow(0 0 10px red); color: #ff0000; transform: scale(1); }
             }
 
-            /* تأثير نبض السعر المبهر */
             @keyframes pricePulse {
                 0% { transform: scale(1); }
-                50% { transform: scale(1.04); text-shadow: 0 0 10px rgba(230, 57, 70, 0.2); }
+                50% { transform: scale(1.05); text-shadow: 0 0 12px rgba(230, 57, 70, 0.3); }
                 100% { transform: scale(1); }
             }
 
-            .price-row { 
-                display: flex; align-items: center; justify-content: center; 
-                gap: 12px; white-space: nowrap; margin: 15px 0; 
-            }
-            
-            .price-val { 
-                color: #e63946; font-size: 3.2rem; font-weight: 900; margin: 0; 
-                animation: pricePulse 0.4s infinite ease-in-out; 
-            }
-            
-            .siren { animation: policeFlash 0.4s infinite; font-size: 2.2rem; }
+            .price-row { display: flex; align-items: center; justify-content: center; gap: 12px; white-space: nowrap; margin: 15px 0; }
+            .price-val { color: #e63946; font-size: 3.2rem; font-weight: 900; margin: 0; animation: pricePulse 0.4s infinite ease-in-out; }
+            .siren { animation: policeFlash 0.3s infinite; font-size: 2.4rem; }
 
             .form-wrapper { padding: 20px; }
             .input-box { width: 100%; padding: 18px; margin-bottom: 12px; border: 1.5px solid #ddd; border-radius: 12px; font-family: 'Cairo'; font-size: 1.1rem; box-sizing: border-box; outline: none; }
-            .input-box:focus { border-color: #e63946; }
             
+            /* ملاحظة الدفع بخط Tajawal */
+            .payment-note { font-family: 'Tajawal', sans-serif; font-weight: 900; font-size: 1.25rem; color: #2d3436; text-align: center; margin-top: 15px; }
+
             .submit-button { 
                 width: 100%; padding: 22px; background: #e63946; color: white; 
                 border: none; border-radius: 15px; font-size: 1.7rem; font-weight: 900; 
-                cursor: pointer; box-shadow: 0 8px 20px rgba(230, 57, 70, 0.3); 
-                transition: transform 0.2s;
+                cursor: pointer; box-shadow: 0 8px 20px rgba(230, 57, 70, 0.3); margin-top: 10px;
             }
-            .submit-button:active { transform: scale(0.97); }
         </style>
 
         <div class="main-container" id="content-holder">
@@ -63,8 +56,9 @@ function displayPage() {
                 <p style="color: #888; margin: 0; font-weight: 700;">آلة صنع الشارات الاحترافية</p>
                 <h1 class="title-main">Machine PIN'S</h1>
                 
-                <div class="sub-text">أصحاب المشاريع المصغرة</div>
-                <div class="sub-text">وأصحاب المشاريع المنزلية</div>
+                <div class="sub-text-tajawal">أصحاب المشاريع المصغرة</div>
+                <div class="sub-text-tajawal">وأصحاب المشاريع المنزلية</div>
+                
                 <div class="brand-blue">CLICK QUICK</div>
                 <div class="solution">جابتلكم الحل</div>
 
@@ -85,46 +79,48 @@ function displayPage() {
             </div>
 
             <div class="form-wrapper">
-                <input type="text" id="user_name" class="input-box" placeholder="الإسم واللقب الكامل *">
-                <input type="text" id="user_phone" inputmode="numeric" class="input-box" placeholder="رقم الهاتف (أرقام فقط) *">
+                <input type="text" id="cust_name" class="input-box" placeholder="الإسم واللقب الكامل *">
+                <input type="text" id="cust_phone" inputmode="numeric" class="input-box" placeholder="رقم الهاتف (أرقام فقط) *">
                 
-                <select id="user_offer" class="input-box">
+                <select id="cust_offer" class="input-box">
                     <option value="1 قطعة (24,300 دج)">طلب قطعة واحدة (24,300 دج)</option>
                     <option value="2 قطعة (48,000 دج)">طلب قطعتين (48,000 دج)</option>
                 </select>
 
-                <select id="user_wilaya" class="input-box">
+                <select id="cust_wilaya" class="input-box">
                     <option value="">إختر الولاية... *</option>
                     ${wilayas.map(w => `<option value="${w}">${w}</option>`).join('')}
                 </select>
 
-                <input type="text" id="user_address" class="input-box" placeholder="العنوان بالتفصيل *">
+                <input type="text" id="cust_address" class="input-box" placeholder="العنوان بالتفصيل *">
 
                 <p style="font-weight: 900; margin: 10px 0 5px 0;">وسيلة التوصيل:</p>
-                <select id="user_delivery" class="input-box" style="border: 2.5px solid #e63946; color: #e63946; font-weight: 900;">
+                <select id="cust_delivery" class="input-box" style="border: 2.5px solid #e63946; color: #e63946; font-weight: 900;">
                     <option value="التوصيل للمنزل">🏠 التوصيل للمنزل (الدار)</option>
                     <option value="التوصيل للمكتب">🏢 التوصيل للمكتب (Yalidine)</option>
                 </select>
 
-                <button onclick="submitFinalOrder()" id="final-btn" class="submit-button">تأكيد الطلب الآن</button>
+                <div class="payment-note">ملاحظة: الدفع عند الإستلام</div>
+
+                <button onclick="sendOrderData()" id="btn-order" class="submit-button">تأكيد الطلب الآن</button>
             </div>
         </div>
     `;
 }
 
-async function submitFinalOrder() {
+async function sendOrderData() {
     const data = {
-        name: document.getElementById('user_name').value.trim(),
-        phone: document.getElementById('user_phone').value.trim(),
-        offer: document.getElementById('user_offer').value,
-        wilaya: document.getElementById('user_wilaya').value,
-        address: document.getElementById('user_address').value.trim(),
-        delivery: document.getElementById('user_delivery').value
+        name: document.getElementById('cust_name').value.trim(),
+        phone: document.getElementById('cust_phone').value.trim(),
+        offer: document.getElementById('cust_offer').value,
+        wilaya: document.getElementById('cust_wilaya').value,
+        address: document.getElementById('cust_address').value.trim(),
+        delivery: document.getElementById('cust_delivery').value
     };
 
-    if(!data.name || !data.phone || !data.wilaya || !data.address) return alert("يرجى ملء جميع الخانات المطلوبة");
+    if(!data.name || !data.phone || !data.wilaya || !data.address) return alert("يرجى ملء كافة الخانات");
 
-    const btn = document.getElementById('final-btn');
+    const btn = document.getElementById('btn-order');
     btn.disabled = true; btn.innerText = "جاري الحفظ...";
 
     try {
@@ -134,15 +130,10 @@ async function submitFinalOrder() {
             body: JSON.stringify({ "data": [data] })
         });
         if(response.ok) {
-            document.getElementById('content-holder').innerHTML = `
-                <div style="padding: 120px 20px; text-align: center;">
-                    <div style="font-size: 70px; margin-bottom: 20px;">✅</div>
-                    <h2 style="color: #28a745; font-size: 2.2rem; font-weight: 900;">تم استلام طلبك!</h2>
-                    <p style="font-size: 1.2rem;">سنتصل بك قريباً جداً لتأكيد العنوان.</p>
-                </div>`;
+            document.getElementById('content-holder').innerHTML = `<div style="padding: 120px 20px; text-align: center;"><h2>✅ تم الطلب بنجاح!</h2><p>سنتصل بك قريباً.</p></div>`;
         } else throw new Error();
     } catch (e) {
-        alert("فشل في الاتصال، يرجى المحاولة مرة أخرى");
+        alert("فشل، حاول مجدداً");
         btn.disabled = false; btn.innerText = "تأكيد الطلب الآن";
     }
 }
