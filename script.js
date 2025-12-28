@@ -10,136 +10,135 @@ function displayPage() {
         <style>
             @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&family=Tajawal:wght@500;800;900&display=swap');
             
-            body { background: #f4f6f9; font-family: 'Cairo', sans-serif; margin: 0; padding: 0; direction: rtl; }
-            .container { width: 100%; max-width: 500px; margin: 0 auto; background: white; min-height: 100vh; box-shadow: 0 0 30px rgba(0,0,0,0.1); }
+            body { background: #f0f2f5; font-family: 'Cairo', sans-serif; margin: 0; padding: 0; direction: rtl; overflow-x: hidden; }
+            .main-wrapper { width: 100%; max-width: 450px; margin: 0 auto; background: white; min-height: 100vh; position: relative; }
             
-            /* السطر العلوي المطلوب */
-            .top-bar { background: #000; color: white; padding: 12px; text-align: center; font-size: 1.5rem; font-weight: 900; }
+            .top-black-bar { background: #000; color: white; padding: 15px; text-align: center; font-size: 1.6rem; font-weight: 900; }
 
-            .main-header { padding: 20px 10px; text-align: center; }
-            .heading-line { font-size: 1.7rem; font-weight: 800; color: #333; margin: 10px 0; white-space: nowrap; }
-            .machine-title { font-size: 3rem; font-weight: 900; color: #e63946; margin: 0; line-height: 1.1; }
+            .content-header { padding: 20px 15px; text-align: center; }
+            .title-straight { font-size: 1.6rem; font-weight: 800; color: #444; margin: 10px 0; white-space: nowrap; }
+            .machine-name-red { font-size: 2.8rem; font-weight: 900; color: #e63946; margin: 5px 0; }
 
-            /* إطار المشاريع المصغرة */
-            .gold-frame { 
-                border: 3px solid #d4af37; border-radius: 15px; padding: 15px; margin: 15px 20px;
-                background: #fffdf5;
+            /* الإطار الذهبي الثابت */
+            .gold-frame-box { 
+                border: 2px solid #d4af37; border-radius: 12px; padding: 12px; margin: 15px auto;
+                background: #fffcf0; max-width: 90%;
             }
-            .frame-text { font-family: 'Tajawal', sans-serif; font-size: 1.4rem; font-weight: 900; color: #856404; margin: 0; white-space: nowrap; }
+            .gold-frame-box p { font-family: 'Tajawal', sans-serif; font-size: 1.3rem; font-weight: 800; color: #856404; margin: 5px 0; white-space: nowrap; }
 
-            .brand-name { font-size: 2.5rem; font-weight: 900; color: #007bff; margin: 10px 0 0 0; }
-            .bulb-text { font-size: 1.6rem; font-weight: 800; color: #28a745; margin-bottom: 15px; }
+            .brand-click { font-size: 2.5rem; font-weight: 900; color: #007bff; margin-top: 10px; }
+            .solution-text { font-size: 1.5rem; font-weight: 800; color: #28a745; margin-bottom: 20px; }
 
-            /* الوميض الشرطي والأحمر والأزرق البارز */
-            @keyframes policeFlash { 
-                0% { filter: drop-shadow(0 0 10px red); transform: scale(1); opacity: 1; }
-                50% { filter: drop-shadow(0 0 30px blue); transform: scale(1.25); opacity: 0.8; }
-                100% { filter: drop-shadow(0 0 10px red); transform: scale(1); opacity: 1; }
+            /* الوميض الشرطي (الحركة الوحيدة مع السعر) */
+            @keyframes policeSiren { 
+                0% { filter: drop-shadow(0 0 5px red); transform: scale(1); }
+                50% { filter: drop-shadow(0 0 20px blue); transform: scale(1.2); }
+                100% { filter: drop-shadow(0 0 5px red); transform: scale(1); }
             }
             @keyframes pricePulse {
-                0% { transform: scale(1); text-shadow: none; }
-                50% { transform: scale(1.08); text-shadow: 0 0 15px rgba(230, 57, 70, 0.4); }
-                100% { transform: scale(1); text-shadow: none; }
+                0% { transform: scale(1); }
+                50% { transform: scale(1.05); }
+                100% { transform: scale(1); }
             }
 
-            .price-box { border: 2.5px dashed #e63946; border-radius: 20px; padding: 20px; margin: 0 15px; background: #fffafa; }
-            .price-row { display: flex; align-items: center; justify-content: center; gap: 15px; white-space: nowrap; margin: 10px 0; }
-            .price-main { color: #e63946; font-size: 3.5rem; font-weight: 900; margin: 0; animation: pricePulse 0.4s infinite ease-in-out; }
-            .siren-icon { animation: policeFlash 0.3s infinite; font-size: 2.5rem; }
+            .price-section { border: 2px dashed #e63946; border-radius: 15px; padding: 15px; margin: 0 15px; background: #fffafa; }
+            .price-display { display: flex; align-items: center; justify-content: center; gap: 10px; margin: 10px 0; }
+            .price-num { color: #e63946; font-size: 3.2rem; font-weight: 900; margin: 0; animation: pricePulse 0.5s infinite; }
+            .siren-emoji { animation: policeSiren 0.4s infinite; font-size: 2.2rem; }
 
-            .order-form { padding: 25px; }
-            .form-input { width: 100%; padding: 18px; margin-bottom: 12px; border: 1.5px solid #ddd; border-radius: 12px; font-family: 'Cairo'; font-size: 1.1rem; box-sizing: border-box; }
-            .delivery-select { border: 2.5px solid #e63946 !important; color: #e63946; font-weight: 900; }
-            .payment-note { font-family: 'Tajawal', sans-serif; font-weight: 900; font-size: 1.3rem; color: #2d3436; text-align: center; margin: 15px 0; }
-            .btn-submit { width: 100%; padding: 22px; background: #e63946; color: white; border: none; border-radius: 15px; font-size: 1.8rem; font-weight: 900; cursor: pointer; box-shadow: 0 10px 25px rgba(230, 57, 70, 0.3); }
+            .form-area { padding: 20px; }
+            .input-style { width: 100%; padding: 15px; margin-bottom: 12px; border: 1px solid #ccc; border-radius: 10px; font-family: 'Cairo'; font-size: 1.1rem; box-sizing: border-box; }
+            .delivery-box { border: 2px solid #e63946; color: #e63946; font-weight: 900; }
+            .pay-note-final { font-family: 'Tajawal', sans-serif; font-weight: 900; font-size: 1.3rem; color: #333; text-align: center; margin: 15px 0; }
+            .order-button { width: 100%; padding: 20px; background: #e63946; color: white; border: none; border-radius: 12px; font-size: 1.7rem; font-weight: 900; cursor: pointer; }
         </style>
 
-        <div class="container" id="app-view">
-            <div class="top-bar">🇩🇿 Click-Quick 🇩🇿</div>
+        <div class="main-wrapper" id="store-page">
+            <div class="top-black-bar">🇩🇿 Click-Quick 🇩🇿</div>
 
-            <div class="main-header">
-                <div class="heading-line">آلة صناعة الشارات الإحترافية</div>
-                <h1 class="machine-title">Machine Pin's</h1>
+            <div class="content-header">
+                <div class="title-straight">آلة صناعة الشارات الإحترافية</div>
+                <h1 class="machine-name-red">Machine Pin's</h1>
                 
-                <div class="gold-frame">
-                    <div class="frame-text">أصحاب المشاريع المصغرة</div>
-                    <div class="frame-text">وأصحاب المشاريع المصغرة</div>
+                <div class="gold-frame-box">
+                    <p>أصحاب المشاريع المصغرة</p>
+                    <p>وأصحاب المشاريع المنزلية</p>
                 </div>
 
-                <div class="brand-name">CLICK QUICK</div>
-                <div class="bulb-text">💡 جابتلكم الحل</div>
+                <div class="brand-click">CLICK QUICK</div>
+                <div class="solution-text">💡 جابتلكم الحل</div>
 
-                <div class="price-box">
-                    <span style="text-decoration: line-through; color: #bbb; font-size: 1.4rem;">25,000 دج</span>
-                    <div class="price-row">
-                        <span class="siren-icon">🚨</span>
-                        <h2 class="price-main">24,300 دج</h2>
-                        <span class="siren-icon">🚨</span>
+                <div class="price-section">
+                    <span style="text-decoration: line-through; color: #bbb; font-size: 1.3rem;">25,000 دج</span>
+                    <div class="price-display">
+                        <span class="siren-emoji">🚨</span>
+                        <h2 class="price-num">24,300 دج</h2>
+                        <span class="siren-emoji">🚨</span>
                     </div>
-                    <div style="border-top: 1px solid #ffebeb; padding-top: 10px;">
-                        <h4 style="color: #28a745; margin: 0; font-size: 1.8rem; font-weight: 900;">🔥 عرض خاص 🔥</h4>
+                    <div style="border-top: 1px solid #eee; padding-top: 10px;">
+                        <h4 style="color: #28a745; margin: 0; font-size: 1.6rem; font-weight: 900;">🔥 عرض خاص 🔥</h4>
                         <p style="color: #28a745; font-weight: 800; margin: 5px 0;">قطعتين بـ 48,000 دج فقط!</p>
                     </div>
                 </div>
             </div>
 
-            <div class="order-form">
-                <input type="text" id="inp_name" class="form-input" placeholder="الإسم واللقب الكامل *">
-                <input type="text" id="inp_phone" inputmode="numeric" class="form-input" placeholder="رقم الهاتف (أرقام فقط) *">
+            <div class="form-area">
+                <input type="text" id="fn_name" class="input-style" placeholder="الإسم واللقب الكامل *">
+                <input type="text" id="fn_phone" inputmode="numeric" class="input-style" placeholder="رقم الهاتف (أرقام فقط) *">
                 
-                <select id="inp_offer" class="form-input">
+                <select id="fn_offer" class="input-style">
                     <option value="1 قطعة (24,300 دج)">طلب قطعة واحدة (24,300 دج)</option>
                     <option value="2 قطعة (48,000 دج)">طلب قطعتين (48,000 دج)</option>
                 </select>
 
-                <select id="inp_wilaya" class="form-input">
+                <select id="fn_wilaya" class="input-style">
                     <option value="">إختر الولاية... *</option>
                     ${wilayas.map(w => `<option value="${w}">${w}</option>`).join('')}
                 </select>
 
-                <input type="text" id="inp_address" class="form-input" placeholder="العنوان بالتفصيل *">
+                <input type="text" id="fn_address" class="input-style" placeholder="العنوان بالتفصيل *">
 
                 <p style="font-weight: 900; margin: 10px 0 5px 0;">وسيلة التوصيل:</p>
-                <select id="inp_delivery" class="form-input delivery-select">
+                <select id="fn_delivery" class="input-style delivery-box">
                     <option value="التوصيل للمنزل">🏠 التوصيل للمنزل (الدار)</option>
                     <option value="التوصيل للمكتب">🏢 التوصيل للمكتب (Yalidine)</option>
                 </select>
 
-                <div class="payment-note">ملاحظة: الدفع عند الإستلام</div>
+                <div class="pay-note-final">ملاحظة: الدفع عند الإستلام</div>
 
-                <button onclick="handleSubmit()" id="submit-action" class="btn-submit">تأكيد الطلب الآن</button>
+                <button onclick="processOrder()" id="btn-submit-final" class="order-button">تأكيد الطلب الآن</button>
             </div>
         </div>
     `;
 }
 
-async function handleSubmit() {
-    const fields = {
-        name: document.getElementById('inp_name').value.trim(),
-        phone: document.getElementById('inp_phone').value.trim(),
-        offer: document.getElementById('inp_offer').value,
-        wilaya: document.getElementById('inp_wilaya').value,
-        address: document.getElementById('inp_address').value.trim(),
-        delivery: document.getElementById('inp_delivery').value
+async function processOrder() {
+    const orderData = {
+        name: document.getElementById('fn_name').value.trim(),
+        phone: document.getElementById('fn_phone').value.trim(),
+        offer: document.getElementById('fn_offer').value,
+        wilaya: document.getElementById('fn_wilaya').value,
+        address: document.getElementById('fn_address').value.trim(),
+        delivery: document.getElementById('fn_delivery').value
     };
 
-    if(!fields.name || !fields.phone || !fields.wilaya || !fields.address) return alert("يرجى ملء جميع الخانات");
+    if(!orderData.name || !orderData.phone || !orderData.wilaya || !orderData.address) return alert("يرجى ملء كافة البيانات");
 
-    const btn = document.getElementById('submit-action');
-    btn.disabled = true; btn.innerText = "جاري الإرسال...";
+    const b = document.getElementById('btn-submit-final');
+    b.disabled = true; b.innerText = "جاري الحفظ...";
 
     try {
-        const res = await fetch(apiURL, {
+        const r = await fetch(apiURL, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ "data": [fields] })
+            body: JSON.stringify({ "data": [orderData] })
         });
-        if(res.ok) {
-            document.getElementById('app-view').innerHTML = `<div style="padding: 150px 20px; text-align: center;"><h2>✅ تم استلام طلبك بنجاح!</h2><p>سنتصل بك قريباً لتأكيد العنوان.</p></div>`;
+        if(r.ok) {
+            document.getElementById('store-page').innerHTML = `<div style="padding: 150px 20px; text-align: center;"><h2>✅ شكراً لك! تم استلام طلبك.</h2></div>`;
         } else throw new Error();
     } catch (e) {
-        alert("فشل في الإرسال، يرجى المحاولة لاحقاً");
-        btn.disabled = false; btn.innerText = "تأكيد الطلب الآن";
+        alert("فشل، حاول مجدداً");
+        b.disabled = false; b.innerText = "تأكيد الطلب الآن";
     }
 }
 
